@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beyy6tdm3orni"
-path="res://.godot/imported/Office.svg-d3fafdde6c70dc40aa92457e68204baa.ctex"
+uid="uid://q2716ye55en8"
+path="res://.godot/imported/Alert.svg-bc0f1d883a1c39bfd79acf05538ffe15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Office/Office.svg"
-dest_files=["res://.godot/imported/Office.svg-d3fafdde6c70dc40aa92457e68204baa.ctex"]
+source_file="res://Icons/Alert.svg"
+dest_files=["res://.godot/imported/Alert.svg-bc0f1d883a1c39bfd79acf05538ffe15.ctex"]
 
 [params]
 

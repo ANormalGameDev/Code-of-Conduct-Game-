@@ -1,72 +1,199 @@
-[gd_scene load_steps=11 format=3 uid="uid://fmh8mamr6hpi"]
+[gd_scene load_steps=21 format=3 uid="uid://ci14wvox084hi"]
 
-[ext_resource type="Texture2D" uid="uid://bogenv1eyvf3w" path="res://Mailbox/MailboxBounce.svg" id="1_pr6bm"]
-[ext_resource type="SpriteFrames" path="res://Icons/AlertPopup.tres" id="2_cxte8"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r4ia5"]
-atlas = ExtResource("1_pr6bm")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eo0mg"]
-atlas = ExtResource("1_pr6bm")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ed6eh"]
-atlas = ExtResource("1_pr6bm")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_468l4"]
-atlas = ExtResource("1_pr6bm")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwhl3"]
-atlas = ExtResource("1_pr6bm")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_acxj7"]
-atlas = ExtResource("1_pr6bm")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gdud5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r4ia5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eo0mg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ed6eh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_468l4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dwhl3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_acxj7")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
+[ext_resource type="Texture2D" uid="uid://bogenv1eyvf3w" path="res://Mailbox/Mailbox.svg" id="1_gq5a4"]
+[ext_resource type="Script" path="res://Mailbox/Mailbox.gd" id="1_y5mj8"]
+[ext_resource type="Texture2D" uid="uid://q2716ye55en8" path="res://Icons/Alert.svg" id="2_ftyjd"]
+[ext_resource type="Script" path="res://Mailbox/MailboxInteraction.gd" id="3_p04h2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vavs1"]
 size = Vector2(24, 20)
 
-[node name="Mailbox" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gobum"]
+size = Vector2(41, 38)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[sub_resource type="Animation" id="Animation_blk5b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alert:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_x3po0"]
+resource_name = "Mailbox Bounce"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alert:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 2]
+}
+
+[sub_resource type="Animation" id="Animation_6sgib"]
+resource_name = "Alert Hover"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Alert:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_axdp7"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alert:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cl2go"]
+_data = {
+"Alert Hover": SubResource("Animation_6sgib"),
+"Idle": SubResource("Animation_axdp7"),
+"Mailbox Bounce": SubResource("Animation_x3po0"),
+"RESET": SubResource("Animation_blk5b")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hw58m"]
+animation = &"Alert Hover"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vdhqw"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jjqi2"]
+animation = &"Mailbox Bounce"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g5lww"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5b561"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wvu0w"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n76uv"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kq4ai"]
+"states/Alert Hover/node" = SubResource("AnimationNodeAnimation_hw58m")
+"states/Alert Hover/position" = Vector2(488, 149)
+states/Idle/node = SubResource("AnimationNodeAnimation_vdhqw")
+states/Idle/position = Vector2(325, 100)
+"states/Mailbox Bounce/node" = SubResource("AnimationNodeAnimation_jjqi2")
+"states/Mailbox Bounce/position" = Vector2(488, 37)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_g5lww"), "Idle", "Mailbox Bounce", SubResource("AnimationNodeStateMachineTransition_5b561"), "Mailbox Bounce", "Alert Hover", SubResource("AnimationNodeStateMachineTransition_wvu0w"), "Alert Hover", "Idle", SubResource("AnimationNodeStateMachineTransition_n76uv")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_p2tmm"]
+
+[node name="Mailbox" type="StaticBody2D"]
+script = ExtResource("1_y5mj8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_gdud5")
+texture = ExtResource("1_gq5a4")
+hframes = 6
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_vavs1")
 
-[node name="Alert" type="AnimatedSprite2D" parent="."]
+[node name="Alert" type="Sprite2D" parent="."]
 position = Vector2(0, -37)
 scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_cxte8")
+texture = ExtResource("2_ftyjd")
+hframes = 7
+frame = 3
+
+[node name="Alert Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Area2D Interaction" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_p04h2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Interaction"]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_gobum")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cl2go")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_kq4ai")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_p2tmm")
+
+[connection signal="timeout" from="Alert Timer" to="." method="_on_timeout"]
+[connection signal="interacted" from="Area2D Interaction" to="." method="_on_interacted"]

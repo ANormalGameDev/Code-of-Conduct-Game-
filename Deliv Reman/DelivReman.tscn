@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dioesgte0wyjd"]
+[gd_scene load_steps=23 format=3 uid="uid://dioesgte0wyjd"]
 
 [ext_resource type="Texture2D" uid="uid://o5as5g1a76k3" path="res://Deliv Reman/DelivReman.svg" id="1_87sjw"]
 [ext_resource type="Script" path="res://Deliv Reman/Character.gd" id="1_uf1dw"]
@@ -150,21 +150,27 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1412c"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3beeg"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3kvh4"]
 states/Idle/node = SubResource("AnimationNodeAnimation_038up")
 states/Idle/position = Vector2(321, 100)
 states/Movement/node = SubResource("AnimationNodeBlendSpace2D_xj4mq")
 states/Movement/position = Vector2(465, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2kop1"), "Idle", "Movement", SubResource("AnimationNodeStateMachineTransition_1412c")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2kop1"), "Idle", "Movement", SubResource("AnimationNodeStateMachineTransition_1412c"), "Movement", "Idle", SubResource("AnimationNodeStateMachineTransition_3beeg")]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_3jdsq"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qtuy"]
+size = Vector2(10, 10.75)
+
 [node name="Deliv" type="CharacterBody2D"]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 motion_mode = 1
 script = ExtResource("1_uf1dw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("1_87sjw")
 hframes = 4
 vframes = 4
@@ -184,3 +190,15 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_3jdsq")
 parameters/Movement/blend_position = Vector2(0, -1.1)
+
+[node name="Area2D Interaction" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Interaction"]
+position = Vector2(0, 1.375)
+shape = SubResource("RectangleShape2D_2qtuy")
+
+[connection signal="area_entered" from="Area2D Interaction" to="." method="_on_interaction_area_entered"]
+[connection signal="area_exited" from="Area2D Interaction" to="." method="_on_interaction_area_exited"]
