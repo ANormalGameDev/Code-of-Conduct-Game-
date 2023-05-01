@@ -112,6 +112,7 @@ grow_vertical = 2
 script = ExtResource("1_m6oih")
 
 [node name="Time" type="Label" parent="."]
+layout_mode = 0
 offset_left = 465.0
 offset_top = 44.0
 offset_right = 576.0
@@ -192,6 +193,7 @@ vertical_alignment = 1
 
 [node name="Score" type="Label" parent="Game End Screen"]
 z_index = 3
+layout_mode = 0
 offset_left = 197.0
 offset_top = 267.0
 offset_right = 391.0
