@@ -1,70 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://ci14wvox084hi"]
+[gd_scene load_steps=21 format=3 uid="uid://n6nwfvx4qu8t"]
 
 [ext_resource type="Texture2D" uid="uid://bogenv1eyvf3w" path="res://Mailbox/Mailbox.svg" id="1_gq5a4"]
 [ext_resource type="Script" path="res://Mailbox/Mailbox.gd" id="1_y5mj8"]
 [ext_resource type="Texture2D" uid="uid://q2716ye55en8" path="res://Icons/Alert.svg" id="2_ftyjd"]
-[ext_resource type="Script" path="res://Mailbox/MailboxInteraction.gd" id="3_p04h2"]
+[ext_resource type="Script" path="res://Environment/Interaction.gd" id="4_rxasp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vavs1"]
 size = Vector2(24, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gobum"]
 size = Vector2(41, 38)
-
-[sub_resource type="Animation" id="Animation_blk5b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Alert:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-
-[sub_resource type="Animation" id="Animation_x3po0"]
-resource_name = "Mailbox Bounce"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4, 5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Alert:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [3, 4, 5, 6, 2]
-}
 
 [sub_resource type="Animation" id="Animation_6sgib"]
 resource_name = "Alert Hover"
@@ -108,6 +53,61 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_x3po0"]
+resource_name = "Mailbox Bounce"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alert:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 2]
+}
+
+[sub_resource type="Animation" id="Animation_blk5b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alert:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cl2go"]
@@ -178,7 +178,7 @@ autostart = true
 collision_layer = 2
 collision_mask = 0
 monitoring = false
-script = ExtResource("3_p04h2")
+script = ExtResource("4_rxasp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Interaction"]
 position = Vector2(-0.5, 10)

@@ -18,7 +18,7 @@ func _on_interacted(package):
 		return
 	
 	if package.receiver == id:
-		# Successful delivery
+		print_debug("Thank you.")
 		package.reset()
 
 
