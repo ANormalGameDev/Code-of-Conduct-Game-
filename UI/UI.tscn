@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0qd0rsnhd815"]
+
+[ext_resource type="LabelSettings" uid="uid://dwuemp2xqjcvo" path="res://Fonts/Label_Settings.tres" id="1_b8ra6"]
+[ext_resource type="Script" path="res://UI/UI.gd" id="1_m6oih"]
+[ext_resource type="FontFile" uid="uid://cdk0wkhql00hk" path="res://Fonts/Font.TTF" id="2_b4rbn"]
+[ext_resource type="Texture2D" uid="uid://d04f2c8d3g68t" path="res://UI/Pause.svg" id="3_jmr31"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_53555"]
+font = ExtResource("2_b4rbn")
+font_size = 50
+
+[sub_resource type="Theme" id="Theme_m0d63"]
+default_font = ExtResource("2_b4rbn")
+default_font_size = 38
+
+[node name="InGame UI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m6oih")
+
+[node name="Time" type="Label" parent="."]
+offset_left = 465.0
+offset_top = 44.0
+offset_right = 576.0
+offset_bottom = 83.0
+text = "65"
+label_settings = ExtResource("1_b8ra6")
+horizontal_alignment = 2
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 465.0
+offset_right = 576.0
+offset_bottom = 36.0
+text = "0"
+label_settings = SubResource("LabelSettings_53555")
+horizontal_alignment = 2
+
+[node name="PauseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 58.0
+offset_bottom = 58.0
+icon = ExtResource("3_jmr31")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Pause Menu" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 640.0
+
+[node name="ResumeButton" type="Button" parent="Pause Menu"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 251.0
+offset_right = 367.0
+offset_bottom = 307.0
+theme = SubResource("Theme_m0d63")
+text = "Resume"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="QuitButton" type="Button" parent="Pause Menu"]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 317.0
+offset_right = 369.0
+offset_bottom = 373.0
+theme = SubResource("Theme_m0d63")
+text = "Quit"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Pause Menu/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Pause Menu/QuitButton" to="." method="_on_quit_button_pressed"]

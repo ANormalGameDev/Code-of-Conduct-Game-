@@ -1,7 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://dioesgte0wyjd"]
+[gd_scene load_steps=26 format=3 uid="uid://dioesgte0wyjd"]
 
 [ext_resource type="Texture2D" uid="uid://o5as5g1a76k3" path="res://Deliv Reman/DelivReman.svg" id="1_87sjw"]
 [ext_resource type="Script" path="res://Deliv Reman/Character.gd" id="1_uf1dw"]
+[ext_resource type="Texture2D" uid="uid://c7xrdgj1oupk8" path="res://Icons/Popup.svg" id="3_ak56v"]
+[ext_resource type="FontFile" uid="uid://cdk0wkhql00hk" path="res://Fonts/Font.TTF" id="4_2gbll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akq8h"]
 size = Vector2(4, 5)
@@ -164,6 +166,11 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qtuy"]
 size = Vector2(10, 10.75)
 
+[sub_resource type="LabelSettings" id="LabelSettings_4ctee"]
+font = ExtResource("4_2gbll")
+font_size = 8
+font_color = Color(0.027451, 0, 0.176471, 1)
+
 [node name="Deliv" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 motion_mode = 1
@@ -171,6 +178,7 @@ script = ExtResource("1_uf1dw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
+y_sort_enabled = true
 texture = ExtResource("1_87sjw")
 hframes = 4
 vframes = 4
@@ -199,6 +207,23 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Interaction"]
 position = Vector2(0, 1.375)
 shape = SubResource("RectangleShape2D_2qtuy")
+
+[node name="Popup" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -14)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_ak56v")
+
+[node name="Label" type="Label" parent="Popup"]
+offset_left = -8.0
+offset_top = -10.0
+offset_right = 9.0
+offset_bottom = 9.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_4ctee")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="Area2D Interaction" to="." method="_on_interaction_area_entered"]
 [connection signal="area_exited" from="Area2D Interaction" to="." method="_on_interaction_area_exited"]

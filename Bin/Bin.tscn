@@ -1,0 +1,124 @@
+[gd_scene load_steps=17 format=3 uid="uid://dikqs0iarowi0"]
+
+[ext_resource type="Script" path="res://Bin/Bin.gd" id="1_b0j2k"]
+[ext_resource type="Texture2D" uid="uid://gjvl75mp46nn" path="res://Bin/Bin.svg" id="2_lfmcg"]
+[ext_resource type="Script" path="res://Environment/Interaction.gd" id="4_vcgxb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vavs1"]
+size = Vector2(24, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gobum"]
+size = Vector2(41, 38)
+
+[sub_resource type="Animation" id="Animation_kl1qp"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_cg1hh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_uplmf"]
+resource_name = "Bounce"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nu16i"]
+_data = {
+"Bounce": SubResource("Animation_uplmf"),
+"Idle": SubResource("Animation_kl1qp"),
+"RESET": SubResource("Animation_cg1hh")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uyehr"]
+animation = &"Bounce"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0gq7c"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fag75"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0hwut"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sywtc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cf0t2"]
+states/Bounce/node = SubResource("AnimationNodeAnimation_uyehr")
+states/Bounce/position = Vector2(455, 100)
+states/Idle/node = SubResource("AnimationNodeAnimation_0gq7c")
+states/Idle/position = Vector2(314, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fag75"), "Idle", "Bounce", SubResource("AnimationNodeStateMachineTransition_0hwut"), "Bounce", "Idle", SubResource("AnimationNodeStateMachineTransition_sywtc")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ymlom"]
+
+[node name="Bin" type="StaticBody2D"]
+script = ExtResource("1_b0j2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_lfmcg")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_vavs1")
+
+[node name="Area2D Interaction" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_vcgxb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Interaction"]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_gobum")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nu16i")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_cf0t2")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ymlom")
+
+[connection signal="interacted" from="Area2D Interaction" to="." method="_on_interacted"]

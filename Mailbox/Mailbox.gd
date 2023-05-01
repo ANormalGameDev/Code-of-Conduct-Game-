@@ -3,6 +3,7 @@ extends StaticBody2D
 @export var id: int = 0
 @export var mailbox_amount: int = 0
 @onready var timer: Timer = $"Alert Timer"
+@onready var ui = $"../UI"
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 var held_package: Package = Package.new()
 
@@ -18,7 +19,14 @@ func _on_interacted(package):
 		return
 	
 	if package.receiver == id:
-		print_debug("Thank you.")
+		if package.is_bad:
+			ui.score -= 20
+			if ui.score < 0:
+				ui.score = 0
+		else:
+			ui.score += 40
+		
+		ui.update_score()
 		package.reset()
 
 
