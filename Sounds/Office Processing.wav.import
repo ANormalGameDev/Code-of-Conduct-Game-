@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://w6amt2bhvf6j"
+path="res://.godot/imported/Office Processing.wav-8f01afc04af415def834bc98173203ba.sample"
+
+[deps]
+
+source_file="res://Sounds/Office Processing.wav"
+dest_files=["res://.godot/imported/Office Processing.wav-8f01afc04af415def834bc98173203ba.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

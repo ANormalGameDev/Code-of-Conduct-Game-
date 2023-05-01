@@ -1,7 +1,11 @@
 extends StaticBody2D
 
+@export var processing_sound: AudioStream
+
 @onready var timer: Timer = $Timer
 @onready var state_machine = $AnimationTree.get("parameters/playback")
+@onready var stream_player = $AudioStreamPlayer2D
+
 var held_package: Package = Package.new()
 var processing = false
 
@@ -25,6 +29,8 @@ func _on_interacted(package):
 	processing = true
 	timer.start()
 	state_machine.travel("Processing")
+	stream_player.stream = processing_sound
+	stream_player.play()
 
 
 func _on_timeout():
@@ -33,3 +39,4 @@ func _on_timeout():
 		state_machine.travel("Bad Package")
 	else:
 		state_machine.travel("Good Package")
+	stream_player.stop()

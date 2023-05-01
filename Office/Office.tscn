@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://d3o5x8gfbi43l"]
+[gd_scene load_steps=29 format=3 uid="uid://d3o5x8gfbi43l"]
 
 [ext_resource type="Texture2D" uid="uid://beyy6tdm3orni" path="res://Office/Office.svg" id="1_0wm73"]
 [ext_resource type="Script" path="res://Office/Office.gd" id="1_hkbdc"]
 [ext_resource type="Texture2D" uid="uid://i76pbxqfynt2" path="res://Icons/Post Office Alerts.svg" id="2_7ulol"]
+[ext_resource type="AudioStream" uid="uid://w6amt2bhvf6j" path="res://Sounds/Office Processing.wav" id="2_b7sfe"]
 [ext_resource type="Script" path="res://Environment/Interaction.gd" id="3_1owg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jne8p"]
@@ -230,6 +231,7 @@ graph_offset = Vector2(53.4086, -99)
 
 [node name="Office" type="StaticBody2D"]
 script = ExtResource("1_hkbdc")
+processing_sound = ExtResource("2_b7sfe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
@@ -273,6 +275,8 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_atpps")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="interacted" from="Area2D Interaction" to="." method="_on_interacted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]

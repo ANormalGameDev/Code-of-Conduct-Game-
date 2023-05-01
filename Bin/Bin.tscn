@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dikqs0iarowi0"]
+[gd_scene load_steps=18 format=3 uid="uid://dikqs0iarowi0"]
 
 [ext_resource type="Script" path="res://Bin/Bin.gd" id="1_b0j2k"]
 [ext_resource type="Texture2D" uid="uid://gjvl75mp46nn" path="res://Bin/Bin.svg" id="2_lfmcg"]
+[ext_resource type="AudioStream" uid="uid://byhl47un630fw" path="res://Sounds/PackageDiscarded.wav" id="2_oifkk"]
 [ext_resource type="Script" path="res://Environment/Interaction.gd" id="4_vcgxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vavs1"]
@@ -90,6 +91,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Bin" type="StaticBody2D"]
 script = ExtResource("1_b0j2k")
+package_discarded_sound = ExtResource("2_oifkk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -120,5 +122,8 @@ tree_root = SubResource("AnimationNodeStateMachine_cf0t2")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ymlom")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 7.923
 
 [connection signal="interacted" from="Area2D Interaction" to="." method="_on_interacted"]

@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @export var package_discarded_sound: AudioStream
 
-@onready var stream_player = $"../AudioStreamPlayer2D"
+@onready var stream_player = $AudioStreamPlayer2D
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 
 

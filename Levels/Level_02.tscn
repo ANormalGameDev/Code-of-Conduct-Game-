@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyequdckc43ci"]
+
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_6k7j1"]
+[ext_resource type="TileSet" uid="uid://vc2tfxo0vqag" path="res://Environment/TileSet.tres" id="2_qwq0c"]
+[ext_resource type="PackedScene" uid="uid://dioesgte0wyjd" path="res://Deliv Reman/DelivReman.tscn" id="3_0rnqm"]
+[ext_resource type="PackedScene" uid="uid://d3o5x8gfbi43l" path="res://Office/Office.tscn" id="4_6gbja"]
+[ext_resource type="PackedScene" uid="uid://n6nwfvx4qu8t" path="res://Mailbox/Mailbox.tscn" id="5_ut140"]
+[ext_resource type="PackedScene" uid="uid://dikqs0iarowi0" path="res://Bin/Bin.tscn" id="6_5khdb"]
+[ext_resource type="PackedScene" uid="uid://d0qd0rsnhd815" path="res://UI/UI.tscn" id="7_2n77h"]
+[ext_resource type="LabelSettings" uid="uid://dwuemp2xqjcvo" path="res://Fonts/Label_Settings.tres" id="8_0b1uf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtv64"]
+size = Vector2(16, 231.333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m08u1"]
+size = Vector2(205.333, 20)
+
+[node name="Level_02" type="Node2D"]
+script = ExtResource("1_6k7j1")
+
+[node name="Environment" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = ExtResource("2_qwq0c")
+format = 2
+layer_0/tile_data = PackedInt32Array(1, 131072, 0, 65537, 65536, 0, 720897, 65536, 0, 851969, 65536, 0, 2, 65536, 0, 65538, 65536, 0, 720898, 65536, 0, 851970, 65536, 0, 3, 65536, 0, 65539, 131072, 0, 720899, 65536, 0, 851971, 65536, 0, 4, 0, 0, 65540, 65536, 0, 720900, 65536, 0, 851972, 65536, 0, 5, 65536, 0, 65541, 65536, 0, 720901, 65536, 0, 851973, 65536, 0, 6, 65536, 0, 65542, 65536, 0, 720902, 65536, 0, 851974, 65536, 0, 7, 65536, 0, 65543, 65536, 0, 720903, 65536, 0, 851975, 65536, 0, 8, 196608, 1, 65544, 0, 1, 720904, 196608, 2, 851976, 65536, 0, 9, 65536, 0, 65545, 131072, 2, 720905, 131072, 1, 851977, 65536, 0, 10, 65536, 0, 65546, 65536, 1, 720906, 196608, 2, 851978, 65536, 0, 11, 65536, 0, 65547, 65536, 0, 131083, 65536, 0, 196619, 65536, 0, 262155, 65536, 0, 327691, 65536, 0, 393227, 196608, 0, 458763, 65536, 0, 524299, 65536, 0, 589835, 196608, 1, 655371, 65536, 0, 720907, 65536, 0, 786443, 65536, 0, 851979, 131072, 0, 0, 65536, 0, 65536, 65536, 0, 131072, 65536, 0, 458752, 65536, 0, 524288, 65536, 0, 589824, 131072, 0, 655360, 65536, 0, 720896, 65536, 0, 786432, 65536, 0, 851968, 65536, 0, 786442, 65536, 2, 786441, 131072, 2, 786440, 0, 2, 786439, 65536, 0, 786438, 65536, 0, 786437, 65536, 0, 786436, 196608, 0, 786435, 65536, 0, 786434, 65536, 0, 786433, 196608, 0, 196608, 65536, 0, 262144, 65536, 0, 327680, 65536, 0, 393216, 65536, 0, 262145, 196608, 2, 327681, 196608, 2, 393217, 196608, 2, 458753, 0, 2, 524289, 65536, 0, 589825, 65536, 0, 655361, 65536, 0, 262146, 0, 2, 327682, 65536, 0, 393218, 65536, 0, 458754, 131072, 2, 524290, 65536, 0, 589826, 65536, 0, 655362, 65536, 0, 262147, 131072, 2, 327683, 65536, 0, 393219, 65536, 0, 458755, 131072, 2, 524291, 65536, 0, 589827, 65536, 0, 655363, 65536, 0, 262148, 131072, 2, 327684, 65536, 0, 393220, 65536, 0, 458756, 131072, 2, 524292, 196608, 1, 589828, 65536, 0, 655364, 131072, 0, 262149, 131072, 2, 327685, 131072, 0, 393221, 65536, 0, 458757, 0, 3, 524293, 196608, 2, 589829, 0, 2, 655365, 65536, 0, 262150, 131072, 2, 327686, 65536, 0, 393222, 65536, 0, 458758, 131072, 2, 524294, 65536, 0, 589830, 131072, 2, 655366, 65536, 0, 262151, 131072, 2, 327687, 65536, 0, 393223, 196608, 1, 458759, 131072, 2, 524295, 65536, 0, 589831, 131072, 2, 655367, 65536, 0, 262152, 65536, 3, 327688, 196608, 2, 393224, 196608, 2, 458760, 65536, 2, 524296, 65536, 0, 589832, 65536, 1, 655368, 196608, 2, 262153, 65536, 0, 327689, 131072, 0, 393225, 65536, 0, 458761, 65536, 0, 524297, 65536, 0, 589833, 65536, 0, 655369, 65536, 0, 262154, 196608, 2, 327690, 196608, 2, 393226, 196608, 2, 458762, 196608, 2, 524298, 196608, 2, 589834, 196608, 2, 655370, 196608, 2, 131074, 65536, 0, 131073, 196608, 0, 196609, 0, 1, 196610, 65536, 1, 196611, 65536, 0, 131075, 65536, 0, 131076, 65536, 0, 196612, 196608, 0, 196613, 65536, 0, 131077, 65536, 0, 131078, 65536, 0, 196614, 65536, 0, 196615, 65536, 0, 131079, 131072, 0, 131080, 196608, 2, 196616, 196608, 2, 196617, 65536, 0, 131081, 65536, 0, 131082, 196608, 2, 196618, 196608, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(-2.66667, 116.333)
+shape = SubResource("RectangleShape2D_xtv64")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Environment"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D2"]
+position = Vector2(200, 114.667)
+shape = SubResource("RectangleShape2D_xtv64")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Environment"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D3"]
+position = Vector2(101.333, -5.33333)
+shape = SubResource("RectangleShape2D_m08u1")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Environment"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D4"]
+position = Vector2(98.6667, 229.333)
+shape = SubResource("RectangleShape2D_m08u1")
+
+[node name="Deliv" parent="." instance=ExtResource("3_0rnqm")]
+position = Vector2(280, 200)
+
+[node name="Office" parent="." instance=ExtResource("4_6gbja")]
+position = Vector2(288, 176)
+
+[node name="Mailbox" parent="." instance=ExtResource("5_ut140")]
+position = Vector2(96, 128)
+id = 1
+mailbox_amount = 3
+
+[node name="Mailbox2" parent="." instance=ExtResource("5_ut140")]
+position = Vector2(456, 560)
+id = 2
+mailbox_amount = 3
+
+[node name="Mailbox3" parent="." instance=ExtResource("5_ut140")]
+position = Vector2(472, 256)
+id = 3
+mailbox_amount = 3
+
+[node name="Bin" parent="." instance=ExtResource("6_5khdb")]
+position = Vector2(456, 32)
+
+[node name="UI" parent="." instance=ExtResource("7_2n77h")]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Info" type="Panel" parent="."]
+offset_right = 592.0
+offset_bottom = 680.0
+
+[node name="Label" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 120.0
+offset_right = 128.0
+offset_bottom = 159.0
+text = "1"
+label_settings = ExtResource("8_0b1uf")
+
+[node name="Label2" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 544.0
+offset_right = 488.0
+offset_bottom = 583.0
+text = "2
+"
+label_settings = ExtResource("8_0b1uf")
+
+[node name="Label3" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 240.0
+offset_right = 504.0
+offset_bottom = 279.0
+text = "3
+"
+label_settings = ExtResource("8_0b1uf")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]

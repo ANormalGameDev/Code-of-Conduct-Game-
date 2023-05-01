@@ -1,8 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://n6nwfvx4qu8t"]
+[gd_scene load_steps=23 format=3 uid="uid://n6nwfvx4qu8t"]
 
 [ext_resource type="Texture2D" uid="uid://bogenv1eyvf3w" path="res://Mailbox/Mailbox.svg" id="1_gq5a4"]
 [ext_resource type="Script" path="res://Mailbox/Mailbox.gd" id="1_y5mj8"]
+[ext_resource type="AudioStream" uid="uid://buh6l5wyuku00" path="res://Sounds/PackageDelivered.wav" id="2_6u2hi"]
 [ext_resource type="Texture2D" uid="uid://q2716ye55en8" path="res://Icons/Alert.svg" id="2_ftyjd"]
+[ext_resource type="AudioStream" uid="uid://dhytca1763yok" path="res://Sounds/PackageDeliveredBad.wav" id="3_v1dir"]
 [ext_resource type="Script" path="res://Environment/Interaction.gd" id="4_rxasp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vavs1"]
@@ -151,6 +153,8 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Mailbox" type="StaticBody2D"]
 script = ExtResource("1_y5mj8")
+package_delivered_sound = ExtResource("2_6u2hi")
+package_delivered_sound_bad = ExtResource("3_v1dir")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -194,6 +198,8 @@ tree_root = SubResource("AnimationNodeStateMachine_kq4ai")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_p2tmm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="Alert Timer" to="." method="_on_timeout"]
 [connection signal="interacted" from="Area2D Interaction" to="." method="_on_interacted"]

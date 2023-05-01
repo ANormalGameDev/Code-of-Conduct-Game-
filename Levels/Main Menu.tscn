@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cyg86yul884yd"]
+[gd_scene load_steps=68 format=3 uid="uid://cyg86yul884yd"]
 
 [ext_resource type="TileSet" uid="uid://vc2tfxo0vqag" path="res://Environment/TileSet.tres" id="1_iiqmd"]
 [ext_resource type="FontFile" uid="uid://cdk0wkhql00hk" path="res://Fonts/Font.TTF" id="3_86fpt"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://q2716ye55en8" path="res://Icons/Alert.svg" id="7_5meun"]
 [ext_resource type="Script" path="res://Environment/Interaction.gd" id="8_qygiw"]
 [ext_resource type="Script" path="res://ExitBin.gd" id="9_ft3il"]
+[ext_resource type="Script" path="res://Levels/SceneLoaderMailbox.gd" id="9_hmbdi"]
 [ext_resource type="Texture2D" uid="uid://gjvl75mp46nn" path="res://Bin/Bin.svg" id="10_vvwfu"]
+[ext_resource type="AudioStream" uid="uid://cco40p1btfrq8" path="res://Sounds/Wholesome.mp3" id="11_yohpk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vavs1"]
 size = Vector2(24, 20)
@@ -323,6 +325,16 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_yf6ag"]
 
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_xnuge"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xuvvn"]
+font = ExtResource("3_86fpt")
+font_size = 24
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_sn5y5"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_d3ekf"]
+
 [sub_resource type="Animation" id="Animation_kl1qp"]
 resource_name = "Idle"
 length = 0.1
@@ -402,6 +414,10 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_m7hkj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ll4y"]
+font = ExtResource("3_86fpt")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_nnxhl"]
 font = ExtResource("3_86fpt")
 
 [node name="Main Menu" type="Node2D"]
@@ -526,6 +542,171 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_yf6ag")
 
+[node name="SceneLoaderMailbox" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(131, 50)
+script = ExtResource("9_hmbdi")
+scene_path = "res://Levels/Level_01.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="SceneLoaderMailbox"]
+scale = Vector2(4, 4)
+texture = ExtResource("3_encgl")
+hframes = 6
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneLoaderMailbox"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_vavs1")
+
+[node name="Alert" type="Sprite2D" parent="SceneLoaderMailbox"]
+position = Vector2(0, -37)
+scale = Vector2(2, 2)
+texture = ExtResource("7_5meun")
+hframes = 7
+frame = 3
+
+[node name="Alert Timer" type="Timer" parent="SceneLoaderMailbox"]
+wait_time = 5.0
+
+[node name="Area2D Interaction" type="Area2D" parent="SceneLoaderMailbox"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("8_qygiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneLoaderMailbox/Area2D Interaction"]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_gobum")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneLoaderMailbox"]
+libraries = {
+"": SubResource("AnimationLibrary_cl2go")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="SceneLoaderMailbox"]
+tree_root = SubResource("AnimationNodeStateMachine_kq4ai")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_xnuge")
+
+[node name="Label" type="Label" parent="SceneLoaderMailbox"]
+offset_left = -43.0
+offset_top = 30.0
+offset_right = 41.0
+offset_bottom = 57.0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_xuvvn")
+
+[node name="SceneLoaderMailbox2" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(300, 50)
+script = ExtResource("9_hmbdi")
+scene_path = "res://Levels/Level_02.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="SceneLoaderMailbox2"]
+scale = Vector2(4, 4)
+texture = ExtResource("3_encgl")
+hframes = 6
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneLoaderMailbox2"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_vavs1")
+
+[node name="Alert" type="Sprite2D" parent="SceneLoaderMailbox2"]
+position = Vector2(0, -37)
+scale = Vector2(2, 2)
+texture = ExtResource("7_5meun")
+hframes = 7
+frame = 3
+
+[node name="Alert Timer" type="Timer" parent="SceneLoaderMailbox2"]
+wait_time = 5.0
+
+[node name="Area2D Interaction" type="Area2D" parent="SceneLoaderMailbox2"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("8_qygiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneLoaderMailbox2/Area2D Interaction"]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_gobum")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneLoaderMailbox2"]
+libraries = {
+"": SubResource("AnimationLibrary_cl2go")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="SceneLoaderMailbox2"]
+tree_root = SubResource("AnimationNodeStateMachine_kq4ai")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_sn5y5")
+
+[node name="Label2" type="Label" parent="SceneLoaderMailbox2"]
+offset_left = -44.0
+offset_top = 30.0
+offset_right = 46.0
+offset_bottom = 57.0
+text = "Level 2"
+label_settings = SubResource("LabelSettings_xuvvn")
+
+[node name="SceneLoaderMailbox3" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(465, 50)
+script = ExtResource("9_hmbdi")
+scene_path = "res://Levels/Level_03.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="SceneLoaderMailbox3"]
+scale = Vector2(4, 4)
+texture = ExtResource("3_encgl")
+hframes = 6
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneLoaderMailbox3"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_vavs1")
+
+[node name="Alert" type="Sprite2D" parent="SceneLoaderMailbox3"]
+position = Vector2(0, -37)
+scale = Vector2(2, 2)
+texture = ExtResource("7_5meun")
+hframes = 7
+frame = 3
+
+[node name="Alert Timer" type="Timer" parent="SceneLoaderMailbox3"]
+wait_time = 5.0
+
+[node name="Area2D Interaction" type="Area2D" parent="SceneLoaderMailbox3"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("8_qygiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneLoaderMailbox3/Area2D Interaction"]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_gobum")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneLoaderMailbox3"]
+libraries = {
+"": SubResource("AnimationLibrary_cl2go")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="SceneLoaderMailbox3"]
+tree_root = SubResource("AnimationNodeStateMachine_kq4ai")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_d3ekf")
+
+[node name="Label3" type="Label" parent="SceneLoaderMailbox3"]
+offset_left = -41.0
+offset_top = 30.0
+offset_right = 49.0
+offset_bottom = 57.0
+text = "Level 3"
+label_settings = SubResource("LabelSettings_xuvvn")
+
 [node name="ExitBin" type="StaticBody2D" parent="."]
 position = Vector2(375, 320)
 script = ExtResource("9_ft3il")
@@ -576,7 +757,22 @@ offset_bottom = 343.0
 text = "Exit"
 label_settings = SubResource("LabelSettings_4ll4y")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Exit"]
+stream = ExtResource("11_yohpk")
+autoplay = true
+
+[node name="DialogueLabel" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 495.0
+offset_right = 564.0
+offset_bottom = 623.0
+label_settings = SubResource("LabelSettings_nnxhl")
+autowrap_mode = 3
+
 [connection signal="area_entered" from="Deliv/Area2D Interaction" to="Deliv" method="_on_interaction_area_entered" flags=18]
 [connection signal="area_exited" from="Deliv/Area2D Interaction" to="Deliv" method="_on_interaction_area_exited" flags=18]
 [connection signal="interacted" from="PlayMailbox/Area2D Interaction" to="PlayMailbox" method="_on_interacted"]
+[connection signal="interacted" from="SceneLoaderMailbox/Area2D Interaction" to="SceneLoaderMailbox" method="_on_interacted"]
+[connection signal="interacted" from="SceneLoaderMailbox2/Area2D Interaction" to="SceneLoaderMailbox2" method="_on_interacted"]
+[connection signal="interacted" from="SceneLoaderMailbox3/Area2D Interaction" to="SceneLoaderMailbox3" method="_on_interacted"]
 [connection signal="interacted" from="ExitBin/Area2D Interaction" to="ExitBin" method="_on_interacted"]
