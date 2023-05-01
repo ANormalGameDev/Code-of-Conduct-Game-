@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://w7xxvdg0d25d"]
+
+[ext_resource type="Texture2D" uid="uid://bq2tno78mmfby" path="res://Icons/AlertHover.svg" id="1_75epc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1afv"]
+atlas = ExtResource("1_75epc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twpd3"]
+atlas = ExtResource("1_75epc")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1afv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twpd3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]

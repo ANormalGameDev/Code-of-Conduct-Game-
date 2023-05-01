@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://fmh8mamr6hpi"]
+
+[ext_resource type="Texture2D" uid="uid://bogenv1eyvf3w" path="res://Mailbox/MailboxBounce.svg" id="1_pr6bm"]
+[ext_resource type="SpriteFrames" path="res://Icons/AlertPopup.tres" id="2_cxte8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4ia5"]
+atlas = ExtResource("1_pr6bm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo0mg"]
+atlas = ExtResource("1_pr6bm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed6eh"]
+atlas = ExtResource("1_pr6bm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_468l4"]
+atlas = ExtResource("1_pr6bm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwhl3"]
+atlas = ExtResource("1_pr6bm")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acxj7"]
+atlas = ExtResource("1_pr6bm")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gdud5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4ia5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo0mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed6eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_468l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwhl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acxj7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vavs1"]
+size = Vector2(24, 20)
+
+[node name="Mailbox" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_gdud5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_vavs1")
+
+[node name="Alert" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -37)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_cxte8")

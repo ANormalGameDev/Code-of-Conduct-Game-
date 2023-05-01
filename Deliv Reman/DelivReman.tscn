@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dioesgte0wyjd"]
+
+[ext_resource type="Texture2D" uid="uid://o5as5g1a76k3" path="res://Deliv Reman/DelivReman.svg" id="1_87sjw"]
+[ext_resource type="Script" path="res://Deliv Reman/Character.gd" id="1_uf1dw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akq8h"]
+size = Vector2(4, 5)
+
+[node name="Deliv" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_uf1dw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_87sjw")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_akq8h")
