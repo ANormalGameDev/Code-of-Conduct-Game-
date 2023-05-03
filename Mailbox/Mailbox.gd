@@ -26,9 +26,6 @@ func _on_interacted(package):
 	if package.receiver == id:
 		# Package Delivery
 		if package.is_bad:
-			ui.score -= 20
-			if ui.score < 0:
-				ui.score = 0
 			ui.bad_package_delivered()
 			stream_player.stream = package_delivered_sound_bad
 		else:
@@ -45,5 +42,5 @@ func _on_timeout():
 	while held_package.receiver == 0 or held_package.receiver == id:
 		held_package.receiver = randi_range(1, mailbox_amount)
 	
-	held_package.is_bad = randi_range(0, 3) == 1
+	held_package.is_bad = randi_range(0, 2) == 1
 	state_machine.travel("Mailbox Bounce")

@@ -9,6 +9,9 @@ var score: int = 0
 
 
 func bad_package_delivered():
+	score = score / 2
+	if score < 0:
+		score = 0
 	state_machine.travel("Score Alert")
 
 
