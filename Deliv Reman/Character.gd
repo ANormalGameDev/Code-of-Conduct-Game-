@@ -43,7 +43,10 @@ func _handle_interactions():
 		if current_interaction != null and last_interact != true:
 			current_interaction.interact(held_package)
 			if not main_menu:
-				info_label.text = "%d" % held_package.receiver
+				if held_package.receiver == 0:
+					info_label.text = "-"
+				else:
+					info_label.text = "%d" % held_package.receiver
 		last_interact = true
 	else:
 		last_interact = false
