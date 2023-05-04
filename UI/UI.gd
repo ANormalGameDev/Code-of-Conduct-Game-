@@ -9,6 +9,7 @@ var score: int = 0
 
 
 func bad_package_delivered():
+	@warning_ignore("integer_division")
 	score = score / 2
 	if score < 0:
 		score = 0
