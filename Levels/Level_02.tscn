@@ -57,20 +57,25 @@ position = Vector2(288, 176)
 [node name="Mailbox" parent="." instance=ExtResource("5_ut140")]
 position = Vector2(96, 128)
 id = 1
-mailbox_amount = 3
+mailbox_amount = 4
 
 [node name="Mailbox2" parent="." instance=ExtResource("5_ut140")]
 position = Vector2(456, 560)
 id = 2
-mailbox_amount = 3
+mailbox_amount = 4
 
 [node name="Mailbox3" parent="." instance=ExtResource("5_ut140")]
-position = Vector2(472, 256)
+position = Vector2(104, 368)
 id = 3
-mailbox_amount = 3
+mailbox_amount = 4
+
+[node name="Mailbox4" parent="." instance=ExtResource("5_ut140")]
+position = Vector2(472, 104)
+id = 4
+mailbox_amount = 4
 
 [node name="Bin" parent="." instance=ExtResource("6_5khdb")]
-position = Vector2(456, 32)
+position = Vector2(280, 320)
 
 [node name="UI" parent="." instance=ExtResource("7_2n77h")]
 
@@ -102,12 +107,21 @@ label_settings = ExtResource("8_0b1uf")
 
 [node name="Label3" type="Label" parent="Info"]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 240.0
-offset_right = 504.0
-offset_bottom = 279.0
+offset_left = 96.0
+offset_top = 352.0
+offset_right = 136.0
+offset_bottom = 391.0
 text = "3
 "
+label_settings = ExtResource("8_0b1uf")
+
+[node name="Label4" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 88.0
+offset_right = 504.0
+offset_bottom = 127.0
+text = "4"
 label_settings = ExtResource("8_0b1uf")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]

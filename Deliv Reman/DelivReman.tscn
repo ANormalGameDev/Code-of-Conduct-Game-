@@ -219,7 +219,7 @@ offset_left = -8.0
 offset_top = -10.0
 offset_right = 9.0
 offset_bottom = 9.0
-text = "0
+text = "-
 "
 label_settings = SubResource("LabelSettings_4ctee")
 horizontal_alignment = 1

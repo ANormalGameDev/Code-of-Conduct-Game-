@@ -39,7 +39,7 @@ func _on_interacted(package):
 
 
 func _on_timeout():
-	while held_package.receiver == 0 or held_package.receiver == id:
+	if held_package.receiver == 0:
 		held_package.receiver = randi_range(1, mailbox_amount)
 	
 	held_package.is_bad = randi_range(0, 2) == 1
